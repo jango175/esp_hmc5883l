@@ -18,12 +18,12 @@
 // #define HMC5883L_I2C_INIT            1 // uncomment to initialize I2C driver
 
 // compensation values (paste your calibration values here)
-#define HMC5883L_X_OFFSET            -128.0
-#define HMC5883L_Y_OFFSET            -0.5
-#define HMC5883L_Z_OFFSET            -126.5
-#define HMC5883L_X_SCALE             1.001307
-#define HMC5883L_Y_SCALE             0.997411
-#define HMC5883L_Z_SCALE             1.001292
+#define HMC5883L_X_OFFSET            -118.500000
+#define HMC5883L_Y_OFFSET            163.500000
+#define HMC5883L_Z_OFFSET            208.500000
+#define HMC5883L_X_SCALE             0.998750
+#define HMC5883L_Y_SCALE             0.957472
+#define HMC5883L_Z_SCALE             1.047853
 
 #define HMC5883L_MAG_DEC_DEG         (-6.0 + 39.0 / 60.0) // magnetic declination for your location (6*39'E)
 
@@ -33,19 +33,19 @@
 #define HMC5883L_ADDR                0x1E
 
 // register map
-#define HMC_CONFIG_A                 0x00 // Configuration Register A Read/Write
-#define HMC_CONFIG_B                 0x01 // Configuration Register B Read/Write
-#define HMC_MODE                     0x02 // Mode Register Read/Write
-#define HMC_DATA_OUT_X_MSB           0x03 // Data Output X MSB Register Read
-#define HMC_DATA_OUT_X_LSB           0x04 // Data Output X LSB Register Read
-#define HMC_DATA_OUT_Z_MSB           0x05 // Data Output Z MSB Register Read
-#define HMC_DATA_OUT_Z_LSB           0x06 // Data Output Z LSB Register Read
-#define HMC_DATA_OUT_Y_MSB           0x07 // Data Output Y MSB Register Read
-#define HMC_DATA_OUT_Y_LSB           0x08 // Data Output Y LSB Register Read
-#define HMC_STATUS                   0x09 // Status Register Read
-#define HMC_ID_A                     0x10 // Identification Register A Read
-#define HMC_ID_B                     0x11 // Identification Register B Read
-#define HMC_ID_C                     0x12 // Identification Register C Read
+#define HMC_CONFIG_A                 0 // Configuration Register A Read/Write
+#define HMC_CONFIG_B                 1 // Configuration Register B Read/Write
+#define HMC_MODE                     2 // Mode Register Read/Write
+#define HMC_DATA_OUT_X_MSB           3 // Data Output X MSB Register Read
+#define HMC_DATA_OUT_X_LSB           4 // Data Output X LSB Register Read
+#define HMC_DATA_OUT_Z_MSB           5 // Data Output Z MSB Register Read
+#define HMC_DATA_OUT_Z_LSB           6 // Data Output Z LSB Register Read
+#define HMC_DATA_OUT_Y_MSB           7 // Data Output Y MSB Register Read
+#define HMC_DATA_OUT_Y_LSB           8 // Data Output Y LSB Register Read
+#define HMC_STATUS                   9 // Status Register Read
+#define HMC_ID_A                     10 // Identification Register A Read
+#define HMC_ID_B                     11 // Identification Register B Read
+#define HMC_ID_C                     12 // Identification Register C Read
 
 // constants
 #define HMC_ID_A_VALUE               0b01001000

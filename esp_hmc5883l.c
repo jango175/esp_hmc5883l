@@ -296,9 +296,9 @@ void hmc5883l_read_raw_magnetometer(hmc5883l_conf_t hmc, int16_t* x, int16_t* y,
     uint8_t reg = HMC_DATA_OUT_X_MSB;
     ESP_ERROR_CHECK(i2c_master_transmit_receive(dev_handle, &reg, 1, data, 6, HMC5883L_TIMEOUT_MS));
 
-    *x = (int16_t)data[1] << 8 | (int16_t)data[0];
-    *y = (int16_t)data[3] << 8 | (int16_t)data[2];
-    *z = (int16_t)data[5] << 8 | (int16_t)data[4];
+    *x = (int16_t)data[0] << 8 | (int16_t)data[1];
+    *z = (int16_t)data[2] << 8 | (int16_t)data[3];
+    *y = (int16_t)data[4] << 8 | (int16_t)data[5];
 
     if (hmc.drdy_pin != -1)
     {
@@ -349,17 +349,17 @@ void hmc5883l_read_id(hmc5883l_conf_t hmc, uint8_t* id)
     ESP_ERROR_CHECK(i2c_master_transmit_receive(dev_handle, &reg, 1, id, 3, HMC5883L_TIMEOUT_MS));
 
     if (id[0] != HMC_ID_A_VALUE)
-        ESP_LOGE(TAG, "HMC5883L not found");
+        ESP_LOGE(TAG, "HMC5883L id A not found");
     else
         ESP_LOGI(TAG, "HMC5883L id A found");
 
     if (id[1] != HMC_ID_B_VALUE)
-        ESP_LOGE(TAG, "HMC5883L not found");
+        ESP_LOGE(TAG, "HMC5883L id B not found");
     else
         ESP_LOGI(TAG, "HMC5883L id B found");
     
     if (id[2] != HMC_ID_C_VALUE)
-        ESP_LOGE(TAG, "HMC5883L not found");
+        ESP_LOGE(TAG, "HMC5883L id C not found");
     else
         ESP_LOGI(TAG, "HMC5883L id C found");
 }
