@@ -29,7 +29,7 @@
 
 // I2C configuration values
 #define HMC5883L_MAX_FREQ            400000
-#define HMC5883L_TIMEOUT_MS          100
+#define HMC5883L_TIMEOUT_MS          1
 #define HMC5883L_ADDR                0x1E
 
 // register map
