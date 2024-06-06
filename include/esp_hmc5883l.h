@@ -101,7 +101,7 @@ enum hmc5883l_operating_mode
 // HMC5883L configuration struct
 typedef struct hmc5883l_conf_t
 {
-    i2c_port_t i2c_port;
+    i2c_port_num_t i2c_port;
     gpio_num_t sda_pin;
     gpio_num_t scl_pin;
     uint32_t i2c_freq;
