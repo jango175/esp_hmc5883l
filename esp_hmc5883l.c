@@ -12,8 +12,6 @@
 static portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 bool measurement_ready = false;
 
-static bool compensation = false;
-
 #ifdef HMC5883L_I2C_INIT
 static i2c_master_bus_handle_t bus_handle;
 #else
@@ -372,10 +370,6 @@ void hmc5883l_read_id(hmc5883l_conf_t hmc, uint8_t* id)
 */
 void hmc5883l_calibrate(hmc5883l_conf_t hmc)
 {
-    portENTER_CRITICAL(&mux);
-    compensation = true;
-    portEXIT_CRITICAL(&mux);
-
     int16_t mag_cal[3][2]; // 0 - min, 1 - max
     for (uint32_t i = 0; i < 3; i++)
     {
@@ -439,13 +433,15 @@ void hmc5883l_calibrate(hmc5883l_conf_t hmc)
     ESP_LOGW(TAG, "Calibration ended");
 
     ESP_LOGI(TAG, "Paste these values to esp_hmc5883l.h compensation values section:");
-    ESP_LOGI(TAG, "#define HMC5883L_X_OFFSET            %f", cal_offset[0]);
-    ESP_LOGI(TAG, "#define HMC5883L_Y_OFFSET            %f", cal_offset[1]);
-    ESP_LOGI(TAG, "#define HMC5883L_Z_OFFSET            %f", cal_offset[2]);
+    printf("#define HMC5883L_X_OFFSET            %ff\n", cal_offset[0]);
+    printf("#define HMC5883L_Y_OFFSET            %ff\n", cal_offset[1]);
+    printf("#define HMC5883L_Z_OFFSET            %ff\n", cal_offset[2]);
 
-    ESP_LOGI(TAG, "#define HMC5883L_X_SCALE             %f", cal_scale[0]);
-    ESP_LOGI(TAG, "#define HMC5883L_Y_SCALE             %f", cal_scale[1]);
-    ESP_LOGI(TAG, "#define HMC5883L_Z_SCALE             %f", cal_scale[2]);
+    printf("#define HMC5883L_X_SCALE             %ff\n", cal_scale[0]);
+    printf("#define HMC5883L_Y_SCALE             %ff\n", cal_scale[1]);
+    printf("#define HMC5883L_Z_SCALE             %ff\n", cal_scale[2]);
+
+    vTaskDelay(portMAX_DELAY);
 }
 
 

@@ -18,14 +18,14 @@
 // #define HMC5883L_I2C_INIT            1 // uncomment to initialize I2C driver
 
 // compensation values (paste your calibration values here)
-#define HMC5883L_X_OFFSET            10.000000
-#define HMC5883L_Y_OFFSET            94.000000
-#define HMC5883L_Z_OFFSET            37.000000
-#define HMC5883L_X_SCALE             0.948266
-#define HMC5883L_Y_SCALE             0.915957
-#define HMC5883L_Z_SCALE             1.171387
+#define HMC5883L_X_OFFSET            68.000000f
+#define HMC5883L_Y_OFFSET            80.000000f
+#define HMC5883L_Z_OFFSET            42.000000f
+#define HMC5883L_X_SCALE             0.917379f
+#define HMC5883L_Y_SCALE             0.911149f
+#define HMC5883L_Z_SCALE             1.230887f
 
-#define HMC5883L_MAG_DEC_DEG         (-6.0 + 39.0 / 60.0) // magnetic declination for your location (6*39'E)
+#define HMC5883L_MAG_DEC_DEG         (4.0 + 19.0/60.0) // magnetic declination for your location (4*19'E)
 
 // I2C configuration values
 #define HMC5883L_MAX_FREQ            400000
